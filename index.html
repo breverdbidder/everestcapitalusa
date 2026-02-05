@@ -1,0 +1,1546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Everest Capital USA | Real Estate Investment & Development</title>
+  <meta name="description" content="Brevard County's premier real estate investment firm. 10+ years of foreclosure investing expertise. Licensed Florida broker and general contractor.">
+  <meta name="keywords" content="real estate investment, foreclosure investing, Brevard County, Florida, property development, general contractor">
+  <meta property="og:title" content="Everest Capital USA | Real Estate Investment & Development">
+  <meta property="og:description" content="Strategic real estate investment in Brevard County, Florida. Foreclosure auctions, property development, and mid-term rentals.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://everestcapitalusa.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0A1628;
+      --navy-light: #132240;
+      --navy-mid: #1A2D4A;
+      --gold: #C9A96E;
+      --gold-light: #D4BC8E;
+      --gold-dark: #A8883F;
+      --cream: #F5F0E8;
+      --cream-dark: #E8E0D0;
+      --white: #FFFFFF;
+      --text-primary: #1A1A1A;
+      --text-secondary: #555555;
+      --text-light: #999999;
+      --text-on-dark: #E0DCD4;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --shadow-sm: 0 1px 3px rgba(10,22,40,0.08);
+      --shadow-md: 0 4px 20px rgba(10,22,40,0.12);
+      --shadow-lg: 0 12px 40px rgba(10,22,40,0.16);
+      --transition: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--text-primary);
+      background: var(--cream);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAVIGATION ─── */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 1.25rem 0;
+      transition: var(--transition);
+    }
+    .nav.scrolled {
+      background: rgba(10,22,40,0.97);
+      backdrop-filter: blur(12px);
+      padding: 0.75rem 0;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--white);
+    }
+    .nav-logo-icon {
+      width: 40px;
+      height: 40px;
+      position: relative;
+    }
+    .nav-logo-icon svg { width: 100%; height: 100%; }
+    .nav-logo-text {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--white);
+    }
+    .nav-logo-sub {
+      font-family: var(--font-body);
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-top: -2px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      transition: var(--transition);
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1.5px;
+      background: var(--gold);
+      transition: var(--transition);
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--white);
+    }
+    .nav-links a:hover::after, .nav-links a.active::after {
+      width: 100%;
+    }
+    .nav-cta {
+      background: var(--gold) !important;
+      color: var(--navy) !important;
+      padding: 0.6rem 1.4rem !important;
+      border-radius: 4px;
+      font-weight: 600 !important;
+      letter-spacing: 0.04em !important;
+      transition: var(--transition);
+    }
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover {
+      background: var(--gold-light) !important;
+      transform: translateY(-1px);
+    }
+
+    /* Mobile menu */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .nav-hamburger span {
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      transition: var(--transition);
+    }
+
+    @media (max-width: 768px) {
+      .nav-hamburger { display: flex; }
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: var(--navy);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 5rem 2rem 2rem;
+        gap: 1.5rem;
+        transition: var(--transition);
+        box-shadow: -10px 0 30px rgba(0,0,0,0.3);
+      }
+      .nav-links.open { right: 0; }
+      .nav-links a { font-size: 1rem; }
+    }
+
+    /* ─── PAGES ─── */
+    .page { display: none; }
+    .page.active { display: block; }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(201,169,110,0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(26,45,74,0.6) 0%, transparent 50%),
+        linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    }
+    .hero-grid {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image:
+        linear-gradient(rgba(201,169,110,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,169,110,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 8rem 2rem 4rem;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1.2rem;
+      background: rgba(201,169,110,0.1);
+      border: 1px solid rgba(201,169,110,0.25);
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2rem;
+      animation: fadeSlideUp 0.8s ease both;
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 600;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      max-width: 800px;
+      animation: fadeSlideUp 0.8s ease 0.15s both;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .hero-sub {
+      font-size: 1.15rem;
+      font-weight: 300;
+      color: var(--text-on-dark);
+      max-width: 560px;
+      margin-bottom: 2.5rem;
+      animation: fadeSlideUp 0.8s ease 0.3s both;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      margin-top: 3.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(201,169,110,0.15);
+      animation: fadeSlideUp 0.8s ease 0.5s both;
+    }
+    .hero-stat-value {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .hero-stat-label {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 0.4rem;
+    }
+    .hero-cta-group {
+      display: flex;
+      gap: 1rem;
+      animation: fadeSlideUp 0.8s ease 0.4s both;
+    }
+
+    /* ─── BUTTONS ─── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.9rem 2rem;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: var(--transition);
+      border: none;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+    }
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(201,169,110,0.3);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.3);
+    }
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-2px);
+    }
+    .btn-dark {
+      background: var(--navy);
+      color: var(--white);
+    }
+    .btn-dark:hover {
+      background: var(--navy-light);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* ─── SECTIONS ─── */
+    .section {
+      padding: 6rem 2rem;
+    }
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 600;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+    .section-subtitle {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin-bottom: 3rem;
+    }
+
+    /* ─── SERVICES INTRO (Home) ─── */
+    .services-home {
+      background: var(--white);
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .service-card {
+      padding: 2.5rem 2rem;
+      background: var(--cream);
+      border-radius: 8px;
+      border: 1px solid rgba(201,169,110,0.12);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 0;
+      background: var(--gold);
+      transition: var(--transition);
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(201,169,110,0.25);
+    }
+    .service-card:hover::before { height: 100%; }
+    .service-card-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(201,169,110,0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      color: var(--gold-dark);
+      font-size: 1.3rem;
+    }
+    .service-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+    .service-card p {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* ─── DIFFERENTIATOR STRIP ─── */
+    .diff-strip {
+      background: var(--navy);
+      padding: 4rem 2rem;
+    }
+    .diff-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      text-align: center;
+    }
+    .diff-item {
+      padding: 1.5rem;
+    }
+    .diff-icon {
+      font-size: 1.6rem;
+      margin-bottom: 0.75rem;
+    }
+    .diff-item h4 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    .diff-item p {
+      font-size: 0.88rem;
+      color: var(--text-on-dark);
+      line-height: 1.6;
+    }
+    @media (max-width: 640px) {
+      .diff-inner { grid-template-columns: 1fr; }
+    }
+
+    /* ─── ABOUT PAGE ─── */
+    .about-hero {
+      min-height: 50vh;
+      background: var(--navy);
+      display: flex;
+      align-items: flex-end;
+      padding-top: 6rem;
+    }
+    .about-hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+      width: 100%;
+    }
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    @media (max-width: 768px) {
+      .about-content { grid-template-columns: 1fr; }
+    }
+    .about-text h3 {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+    .about-text p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.25rem;
+    }
+    .credentials {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .credential {
+      padding: 1.25rem;
+      background: var(--white);
+      border-radius: 6px;
+      border: 1px solid rgba(201,169,110,0.15);
+    }
+    .credential-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 0.3rem;
+    }
+    .credential-value {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    /* ─── SERVICES PAGE ─── */
+    .service-detail {
+      padding: 3rem 0;
+      border-bottom: 1px solid rgba(201,169,110,0.12);
+    }
+    .service-detail:last-child { border-bottom: none; }
+    .service-detail-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    @media (max-width: 768px) {
+      .service-detail-inner { grid-template-columns: 1fr; }
+    }
+    .service-detail-num {
+      font-family: var(--font-display);
+      font-size: 4rem;
+      font-weight: 700;
+      color: rgba(201,169,110,0.15);
+      line-height: 1;
+      margin-bottom: 0.75rem;
+    }
+    .service-detail h3 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+    .service-detail-tag {
+      display: inline-block;
+      padding: 0.3rem 0.8rem;
+      background: rgba(201,169,110,0.1);
+      color: var(--gold-dark);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 3px;
+      margin-bottom: 1rem;
+    }
+    .service-detail p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+    .service-detail ul {
+      list-style: none;
+      padding: 0;
+    }
+    .service-detail li {
+      padding: 0.5rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+    }
+    .service-detail li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    /* ─── PORTFOLIO PAGE ─── */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .portfolio-card {
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(201,169,110,0.12);
+      transition: var(--transition);
+    }
+    .portfolio-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+    .portfolio-card-header {
+      height: 200px;
+      background: var(--navy);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .portfolio-card-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--navy-light), var(--navy-mid));
+    }
+    .portfolio-card-type {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      padding: 0.35rem 0.8rem;
+      background: rgba(201,169,110,0.2);
+      border: 1px solid rgba(201,169,110,0.3);
+      color: var(--gold);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 3px;
+      z-index: 2;
+    }
+    .portfolio-card-icon {
+      font-size: 3rem;
+      z-index: 2;
+      opacity: 0.25;
+    }
+    .portfolio-card-body {
+      padding: 1.5rem;
+    }
+    .portfolio-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .portfolio-card-location {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      margin-bottom: 1rem;
+    }
+    .portfolio-card p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+    .portfolio-card-stats {
+      display: flex;
+      gap: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--cream-dark);
+    }
+    .portfolio-card-stat label {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-light);
+    }
+    .portfolio-card-stat span {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    /* ─── CONTACT PAGE ─── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 3rem;
+    }
+    @media (max-width: 768px) {
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+    .contact-info-card {
+      padding: 1.5rem;
+      background: var(--white);
+      border-radius: 6px;
+      border: 1px solid rgba(201,169,110,0.12);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .contact-info-icon {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      background: rgba(201,169,110,0.1);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold-dark);
+      font-size: 1.1rem;
+    }
+    .contact-info-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 0.25rem;
+    }
+    .contact-info-value {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+    .contact-info-value a {
+      color: var(--navy);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(10,22,40,0.2);
+      transition: var(--transition);
+    }
+    .contact-info-value a:hover { border-color: var(--gold); color: var(--gold-dark); }
+
+    .contact-form {
+      background: var(--white);
+      padding: 2.5rem;
+      border-radius: 8px;
+      border: 1px solid rgba(201,169,110,0.12);
+    }
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      border: 1.5px solid var(--cream-dark);
+      border-radius: 4px;
+      background: var(--cream);
+      color: var(--text-primary);
+      transition: var(--transition);
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--gold);
+      background: var(--white);
+    }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    @media (max-width: 480px) {
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    /* ─── FOOTER ─── */
+    .footer {
+      background: var(--navy);
+      padding: 4rem 2rem 2rem;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(201,169,110,0.12);
+    }
+    @media (max-width: 640px) {
+      .footer-top { grid-template-columns: 1fr; }
+    }
+    .footer-brand p {
+      font-size: 0.88rem;
+      color: var(--text-on-dark);
+      max-width: 320px;
+      margin-top: 1rem;
+      line-height: 1.7;
+    }
+    .footer-col h4 {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+    }
+    .footer-col a {
+      display: block;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      padding: 0.3rem 0;
+      transition: var(--transition);
+    }
+    .footer-col a:hover { color: var(--white); }
+    .footer-bottom {
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-copy {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.35);
+    }
+    .footer-badges {
+      display: flex;
+      gap: 1rem;
+    }
+    .footer-badge {
+      padding: 0.35rem 0.8rem;
+      background: rgba(201,169,110,0.08);
+      border: 1px solid rgba(201,169,110,0.15);
+      border-radius: 3px;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(201,169,110,0.6);
+    }
+
+    /* ─── CTA BANNER ─── */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+    .cta-banner h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+    .cta-banner p {
+      font-size: 1.05rem;
+      color: var(--text-on-dark);
+      max-width: 500px;
+      margin: 0 auto 2rem;
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Smooth page transitions */
+    .page-enter {
+      animation: pageIn 0.4s ease both;
+    }
+    @keyframes pageIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 640px) {
+      .hero-stats { flex-direction: column; gap: 1.5rem; }
+      .hero-cta-group { flex-direction: column; }
+      .hero h1 { font-size: 2.4rem; }
+      .credentials { grid-template-columns: 1fr; }
+      .portfolio-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="nav" id="navbar">
+    <div class="nav-inner">
+      <a href="#home" class="nav-logo" onclick="navigate('home')">
+        <div class="nav-logo-icon">
+          <svg viewBox="0 0 40 40" fill="none">
+            <path d="M20 4L4 36h32L20 4z" fill="none" stroke="#C9A96E" stroke-width="2"/>
+            <path d="M20 14L12 32h16L20 14z" fill="rgba(201,169,110,0.15)" stroke="#C9A96E" stroke-width="1.5"/>
+            <line x1="20" y1="4" x2="20" y2="14" stroke="#C9A96E" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div>
+          <span class="nav-logo-text">Everest Capital</span>
+          <span class="nav-logo-sub">USA</span>
+        </div>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" onclick="navigate('home')" class="active" id="nav-home">Home</a></li>
+        <li><a href="#about" onclick="navigate('about')" id="nav-about">About</a></li>
+        <li><a href="#services" onclick="navigate('services')" id="nav-services">Services</a></li>
+        <li><a href="#portfolio" onclick="navigate('portfolio')" id="nav-portfolio">Portfolio</a></li>
+        <li><a href="#contact" onclick="navigate('contact')" id="nav-contact" class="nav-cta">Contact</a></li>
+      </ul>
+      <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══════════ HOME PAGE ═══════════ -->
+  <div id="page-home" class="page active">
+
+    <section class="hero">
+      <div class="hero-grid"></div>
+      <div class="hero-content">
+        <div class="hero-badge">⛰ Brevard County, Florida</div>
+        <h1>Strategic Real Estate <em>Investment</em> & Development</h1>
+        <p class="hero-sub">Acquiring, developing, and building value across Florida's Space Coast. Over a decade of foreclosure investing expertise backed by institutional-grade analysis.</p>
+        <div class="hero-cta-group">
+          <a href="#contact" onclick="navigate('contact')" class="btn btn-primary">Start a Conversation</a>
+          <a href="#services" onclick="navigate('services')" class="btn btn-outline">Our Approach</a>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <div class="hero-stat-value">10+</div>
+            <div class="hero-stat-label">Years Experience</div>
+          </div>
+          <div>
+            <div class="hero-stat-value">FL</div>
+            <div class="hero-stat-label">Licensed Broker</div>
+          </div>
+          <div>
+            <div class="hero-stat-value">CGC</div>
+            <div class="hero-stat-label">General Contractor</div>
+          </div>
+          <div>
+            <div class="hero-stat-value">AI</div>
+            <div class="hero-stat-label">Powered Analysis</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section services-home">
+      <div class="section-inner">
+        <div class="section-label">What We Do</div>
+        <h2 class="section-title">Full-Spectrum Real Estate Capability</h2>
+        <p class="section-subtitle">From courthouse steps to completed construction — we handle every phase of the investment lifecycle.</p>
+        <div class="services-grid">
+          <div class="service-card reveal">
+            <div class="service-card-icon">⚖️</div>
+            <h3>Foreclosure Acquisition</h3>
+            <p>Data-driven foreclosure auction bidding with AI-powered lien analysis, title search, and risk assessment. Every bid backed by comprehensive due diligence.</p>
+          </div>
+          <div class="service-card reveal">
+            <div class="service-card-icon">🏗️</div>
+            <h3>Development & Construction</h3>
+            <p>Licensed general contractor capabilities for renovation, rehab, and ground-up construction. From permits to certificate of occupancy.</p>
+          </div>
+          <div class="service-card reveal">
+            <div class="service-card-icon">🏠</div>
+            <h3>Mid-Term Furnished Rentals</h3>
+            <p>Professionally managed furnished properties targeting traveling professionals, contractors, and relocating families on Florida's Space Coast.</p>
+          </div>
+          <div class="service-card reveal">
+            <div class="service-card-icon">📊</div>
+            <h3>AI-Powered Intelligence</h3>
+            <p>Proprietary technology platform analyzing auction data, lien priority, demographics, and market conditions to identify asymmetric opportunities.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="diff-strip">
+      <div class="diff-inner">
+        <div class="diff-item reveal">
+          <div class="diff-icon">🔍</div>
+          <h4>Due Diligence First</h4>
+          <p>Every property is analyzed through a 12-stage pipeline. No guesswork — actual recorded documents, verified liens, and real market data.</p>
+        </div>
+        <div class="diff-item reveal">
+          <div class="diff-icon">🛡️</div>
+          <h4>Risk Mitigation</h4>
+          <p>Our AI detects hidden risks like senior mortgages surviving HOA foreclosures, delinquent tax certificates, and code violations before we bid.</p>
+        </div>
+        <div class="diff-item reveal">
+          <div class="diff-icon">🔑</div>
+          <h4>Vertically Integrated</h4>
+          <p>Broker, contractor, and investor under one roof. We acquire, renovate, and manage without third-party dependencies slowing us down.</p>
+        </div>
+      </div>
+    </div>
+
+    <section class="cta-banner">
+      <h2>Ready to Explore an Opportunity?</h2>
+      <p>Whether you're a property owner, fellow investor, or looking for partnership opportunities in Brevard County.</p>
+      <a href="#contact" onclick="navigate('contact')" class="btn btn-primary">Get in Touch</a>
+    </section>
+  </div>
+
+  <!-- ═══════════ ABOUT PAGE ═══════════ -->
+  <div id="page-about" class="page">
+
+    <section class="about-hero">
+      <div class="about-hero-inner">
+        <div class="hero-badge" style="animation:none">About Everest Capital USA</div>
+        <h1 style="font-family:var(--font-display);font-size:clamp(2.4rem,5vw,3.5rem);font-weight:600;color:var(--white);margin-bottom:1rem;">Developer. Builder.<br><em style="color:var(--gold)">Investor.</em></h1>
+        <p style="font-size:1.1rem;color:var(--text-on-dark);max-width:560px;">A vertically integrated real estate investment firm built on a decade of hands-on experience in Florida's foreclosure markets.</p>
+      </div>
+    </section>
+
+    <section class="section" style="background:var(--white)">
+      <div class="section-inner">
+        <div class="about-content">
+          <div class="about-text">
+            <h3>Ariel Shapira</h3>
+            <div class="service-detail-tag">Founder & Managing Member</div>
+            <p>With over ten years in Florida's foreclosure auction market, I've built Everest Capital USA on a straightforward principle: <strong>know more about the property than anyone else at the auction</strong>.</p>
+            <p>As both a licensed Florida real estate broker and certified general contractor, I don't just find deals — I build them. From identifying undervalued assets at the Titusville courthouse to managing complete renovations, every step stays under one roof.</p>
+            <p>I developed proprietary AI-powered analysis tools that process lien data, title searches, tax certificates, and demographic information to evaluate every foreclosure opportunity with institutional-grade precision — eliminating the guesswork that costs most investors six figures in hidden liens.</p>
+            <p>Based in Satellite Beach on Florida's Space Coast, Everest Capital USA focuses exclusively on Brevard County — the market I know inside and out.</p>
+
+            <div class="credentials reveal">
+              <div class="credential">
+                <div class="credential-label">License</div>
+                <div class="credential-value">Florida Real Estate Broker</div>
+              </div>
+              <div class="credential">
+                <div class="credential-label">License</div>
+                <div class="credential-value">Certified General Contractor</div>
+              </div>
+              <div class="credential">
+                <div class="credential-label">Focus</div>
+                <div class="credential-value">Brevard County, FL</div>
+              </div>
+              <div class="credential">
+                <div class="credential-label">Experience</div>
+                <div class="credential-value">10+ Years Foreclosure</div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div style="background:var(--navy);border-radius:8px;padding:3rem 2rem;text-align:center;">
+              <div style="width:120px;height:120px;margin:0 auto 1.5rem;background:rgba(201,169,110,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:3rem;">⛰</div>
+              <h4 style="font-family:var(--font-display);font-size:1.5rem;color:var(--white);margin-bottom:0.5rem;">Ariel Shapira</h4>
+              <p style="color:var(--gold);font-size:0.82rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1.5rem;">Developer & Builder</p>
+              <p style="color:var(--text-on-dark);font-size:0.9rem;line-height:1.7;">Satellite Beach, Florida<br>Florida's Space Coast</p>
+              <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(201,169,110,0.15);">
+                <p style="font-family:var(--font-display);font-style:italic;color:var(--gold-light);font-size:1.1rem;line-height:1.6;">"The summit is what drives us, but the climb itself is what makes us."</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ═══════════ SERVICES PAGE ═══════════ -->
+  <div id="page-services" class="page">
+
+    <section class="about-hero">
+      <div class="about-hero-inner">
+        <div class="hero-badge" style="animation:none">Our Services</div>
+        <h1 style="font-family:var(--font-display);font-size:clamp(2.4rem,5vw,3.5rem);font-weight:600;color:var(--white);margin-bottom:1rem;">End-to-End <em style="color:var(--gold)">Capability</em></h1>
+        <p style="font-size:1.1rem;color:var(--text-on-dark);max-width:560px;">Four integrated disciplines that let us capture value at every stage of the real estate lifecycle.</p>
+      </div>
+    </section>
+
+    <section class="section" style="background:var(--white)">
+      <div class="section-inner">
+
+        <div class="service-detail reveal">
+          <div class="service-detail-inner">
+            <div>
+              <div class="service-detail-num">01</div>
+              <h3>Foreclosure Auction Acquisition</h3>
+              <div class="service-detail-tag">Core Competency</div>
+            </div>
+            <div>
+              <p>We acquire properties at Brevard County foreclosure auctions using a proprietary 12-stage analysis pipeline. Every bid is backed by comprehensive title search, lien priority analysis, and risk assessment — not guesswork.</p>
+              <p>Our AI-powered platform processes county records, tax certificates, and demographic data to calculate precise maximum bid amounts that protect downside while maximizing upside potential.</p>
+              <ul>
+                <li>Automated lien discovery across multiple county databases</li>
+                <li>HOA foreclosure detection with senior mortgage analysis</li>
+                <li>Tax certificate delinquency verification</li>
+                <li>ML-powered probability scoring for auction outcomes</li>
+                <li>Real-time bid/judgment ratio calculations</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-detail reveal">
+          <div class="service-detail-inner">
+            <div>
+              <div class="service-detail-num">02</div>
+              <h3>Property Development & Construction</h3>
+              <div class="service-detail-tag">Licensed CGC</div>
+            </div>
+            <div>
+              <p>As a certified general contractor, we handle everything from minor rehab to major renovation in-house. This eliminates contractor risk, controls timelines, and keeps margins tight.</p>
+              <p>Our construction expertise means we can accurately estimate repair costs before bidding — a critical advantage at auction where most investors rely on rough guesses that erode their profit margin.</p>
+              <ul>
+                <li>Complete renovation and rehab management</li>
+                <li>Accurate pre-bid repair cost estimation</li>
+                <li>Permit management and code compliance</li>
+                <li>Subcontractor coordination and quality control</li>
+                <li>Timeline management from acquisition to completion</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-detail reveal">
+          <div class="service-detail-inner">
+            <div>
+              <div class="service-detail-num">03</div>
+              <h3>Mid-Term Furnished Rentals</h3>
+              <div class="service-detail-tag">Income Strategy</div>
+            </div>
+            <div>
+              <p>We operate professionally managed furnished rental properties targeting 30-180 day stays. Florida's Space Coast attracts defense contractors, aerospace professionals, snowbirds, and relocating families — creating consistent demand for quality mid-term housing.</p>
+              <p>Our target zip codes are selected using demographic analysis, income levels, vacancy rates, and proximity to major employers like Kennedy Space Center, L3Harris, and Northrop Grumman.</p>
+              <ul>
+                <li>Professionally furnished and managed units</li>
+                <li>Targeting traveling professionals and contractors</li>
+                <li>Optimal Space Coast locations with high demand</li>
+                <li>Higher yields than traditional long-term rentals</li>
+                <li>Flexible lease terms with premium positioning</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-detail reveal">
+          <div class="service-detail-inner">
+            <div>
+              <div class="service-detail-num">04</div>
+              <h3>AI-Powered Real Estate Intelligence</h3>
+              <div class="service-detail-tag">Technology Edge</div>
+            </div>
+            <div>
+              <p>We've built proprietary technology that gives us an institutional-grade analytical edge. Our platform integrates multiple data sources — county records, property appraiser data, clerk of court filings, and Census demographics — into a unified decision engine.</p>
+              <p>This isn't generic real estate software. It's a purpose-built system designed specifically for the unique dynamics of Florida foreclosure markets, where a single missed lien can turn a profitable deal into a six-figure loss.</p>
+              <ul>
+                <li>Multi-source data integration and analysis</li>
+                <li>Automated risk scoring and bid recommendations</li>
+                <li>Lien priority analysis with recorded document verification</li>
+                <li>Market trend analysis and demographic profiling</li>
+                <li>Comprehensive one-page property reports</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="cta-banner">
+      <h2>Interested in Our Approach?</h2>
+      <p>We're always open to discussing opportunities, partnerships, or how our methodology works.</p>
+      <a href="#contact" onclick="navigate('contact')" class="btn btn-primary">Let's Talk</a>
+    </section>
+  </div>
+
+  <!-- ═══════════ PORTFOLIO PAGE ═══════════ -->
+  <div id="page-portfolio" class="page">
+
+    <section class="about-hero">
+      <div class="about-hero-inner">
+        <div class="hero-badge" style="animation:none">Track Record</div>
+        <h1 style="font-family:var(--font-display);font-size:clamp(2.4rem,5vw,3.5rem);font-weight:600;color:var(--white);margin-bottom:1rem;">Portfolio <em style="color:var(--gold)">Highlights</em></h1>
+        <p style="font-size:1.1rem;color:var(--text-on-dark);max-width:560px;">A selection of investment categories and project types across Brevard County's foreclosure and development markets.</p>
+      </div>
+    </section>
+
+    <section class="section" style="background:var(--white)">
+      <div class="section-inner">
+        <div class="section-label">Investment Categories</div>
+        <h2 class="section-title">Where We Create Value</h2>
+        <p class="section-subtitle">Our portfolio spans multiple property types and investment strategies across Florida's Space Coast.</p>
+
+        <div class="portfolio-grid">
+
+          <div class="portfolio-card reveal">
+            <div class="portfolio-card-header">
+              <span class="portfolio-card-type">Foreclosure Acquisition</span>
+              <div class="portfolio-card-icon" style="color:var(--gold)">⚖️</div>
+            </div>
+            <div class="portfolio-card-body">
+              <h3>Courthouse Auction Acquisitions</h3>
+              <p class="portfolio-card-location">Titusville Courthouse, Brevard County</p>
+              <p>In-person bidding at monthly foreclosure auctions with AI-verified due diligence. Each property evaluated through our 12-stage analysis pipeline before a single bid is placed.</p>
+              <div class="portfolio-card-stats">
+                <div class="portfolio-card-stat">
+                  <label>Strategy</label>
+                  <span>Buy & Hold</span>
+                </div>
+                <div class="portfolio-card-stat">
+                  <label>Analysis</label>
+                  <span>AI-Powered</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio-card reveal">
+            <div class="portfolio-card-header">
+              <span class="portfolio-card-type">Renovation</span>
+              <div class="portfolio-card-icon" style="color:var(--gold)">🏗️</div>
+            </div>
+            <div class="portfolio-card-body">
+              <h3>Value-Add Renovation Projects</h3>
+              <p class="portfolio-card-location">Satellite Beach, Melbourne, Merritt Island</p>
+              <p>Full-scale renovations managed in-house with CGC license. From structural repairs to complete interior remodels, controlling every aspect of the construction timeline and budget.</p>
+              <div class="portfolio-card-stats">
+                <div class="portfolio-card-stat">
+                  <label>Scope</label>
+                  <span>Full Rehab</span>
+                </div>
+                <div class="portfolio-card-stat">
+                  <label>Management</label>
+                  <span>In-House</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio-card reveal">
+            <div class="portfolio-card-header">
+              <span class="portfolio-card-type">Rental Income</span>
+              <div class="portfolio-card-icon" style="color:var(--gold)">🏠</div>
+            </div>
+            <div class="portfolio-card-body">
+              <h3>Mid-Term Furnished Rentals</h3>
+              <p class="portfolio-card-location">Satellite Beach, Viera, Indialantic</p>
+              <p>Professionally furnished properties targeting 30-180 day stays for Space Coast professionals. Premium locations near KSC, L3Harris, and Patrick SFB with strong demand year-round.</p>
+              <div class="portfolio-card-stats">
+                <div class="portfolio-card-stat">
+                  <label>Duration</label>
+                  <span>30-180 Days</span>
+                </div>
+                <div class="portfolio-card-stat">
+                  <label>Market</label>
+                  <span>Space Coast</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio-card reveal">
+            <div class="portfolio-card-header">
+              <span class="portfolio-card-type">Technology</span>
+              <div class="portfolio-card-icon" style="color:var(--gold)">📊</div>
+            </div>
+            <div class="portfolio-card-body">
+              <h3>Proprietary Analysis Platform</h3>
+              <p class="portfolio-card-location">Built In-House for Brevard County</p>
+              <p>AI-powered foreclosure intelligence platform that processes lien data, title records, tax certificates, and demographics into actionable bid recommendations with risk scoring.</p>
+              <div class="portfolio-card-stats">
+                <div class="portfolio-card-stat">
+                  <label>Type</label>
+                  <span>Agentic AI</span>
+                </div>
+                <div class="portfolio-card-stat">
+                  <label>Advantage</label>
+                  <span>Proprietary</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-banner">
+      <h2>Explore Investment Opportunities</h2>
+      <p>We're selectively open to partnerships and co-investment opportunities in Brevard County.</p>
+      <a href="#contact" onclick="navigate('contact')" class="btn btn-primary">Discuss Opportunities</a>
+    </section>
+  </div>
+
+  <!-- ═══════════ CONTACT PAGE ═══════════ -->
+  <div id="page-contact" class="page">
+
+    <section class="about-hero">
+      <div class="about-hero-inner">
+        <div class="hero-badge" style="animation:none">Get in Touch</div>
+        <h1 style="font-family:var(--font-display);font-size:clamp(2.4rem,5vw,3.5rem);font-weight:600;color:var(--white);margin-bottom:1rem;">Start a <em style="color:var(--gold)">Conversation</em></h1>
+        <p style="font-size:1.1rem;color:var(--text-on-dark);max-width:560px;">Whether you have a property to discuss, a partnership to explore, or simply want to learn more about our approach.</p>
+      </div>
+    </section>
+
+    <section class="section" style="background:var(--white)">
+      <div class="section-inner">
+        <div class="contact-grid">
+          <div>
+            <div class="section-label">Contact Information</div>
+            <h2 class="section-title" style="font-size:1.8rem;">Let's Connect</h2>
+            <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:2rem;">I respond to all inquiries personally. Reach out through any of the channels below or use the form — I typically respond within 24 hours on business days.</p>
+
+            <div class="contact-info-card reveal">
+              <div class="contact-info-icon">📍</div>
+              <div>
+                <div class="contact-info-label">Location</div>
+                <div class="contact-info-value">Satellite Beach, Florida 32937</div>
+              </div>
+            </div>
+            <div class="contact-info-card reveal">
+              <div class="contact-info-icon">📧</div>
+              <div>
+                <div class="contact-info-label">Email</div>
+                <div class="contact-info-value"><a href="mailto:ariel@everestcapitalusa.com">ariel@everestcapitalusa.com</a></div>
+              </div>
+            </div>
+            <div class="contact-info-card reveal">
+              <div class="contact-info-icon">📞</div>
+              <div>
+                <div class="contact-info-label">Phone</div>
+                <div class="contact-info-value"><a href="tel:+15618090929">(561) 809-0929</a></div>
+              </div>
+            </div>
+            <div class="contact-info-card reveal">
+              <div class="contact-info-icon">🕐</div>
+              <div>
+                <div class="contact-info-label">Hours</div>
+                <div class="contact-info-value">Mon–Thu 9AM–5PM EST</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form reveal">
+            <h3 style="font-family:var(--font-display);font-size:1.4rem;font-weight:600;margin-bottom:1.5rem;">Send a Message</h3>
+            <form id="contactForm" onsubmit="handleContact(event)">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name">Full Name</label>
+                  <input type="text" id="name" name="name" placeholder="Your name" required>
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone (Optional)</label>
+                <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567">
+              </div>
+              <div class="form-group">
+                <label for="interest">Area of Interest</label>
+                <select id="interest" name="interest">
+                  <option value="">Select one...</option>
+                  <option value="investment">Investment Opportunity</option>
+                  <option value="partnership">Partnership Discussion</option>
+                  <option value="property">Property Inquiry</option>
+                  <option value="rental">Mid-Term Rental</option>
+                  <option value="construction">Construction Services</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Tell me about your situation or what you're looking for..." required></textarea>
+              </div>
+              <button type="submit" class="btn btn-dark" style="width:100%;justify-content:center;">Send Message →</button>
+            </form>
+            <div id="formSuccess" style="display:none;text-align:center;padding:2rem;">
+              <div style="font-size:2.5rem;margin-bottom:1rem;">✅</div>
+              <h4 style="font-family:var(--font-display);font-size:1.3rem;margin-bottom:0.5rem;">Message Received</h4>
+              <p style="font-size:0.92rem;color:var(--text-secondary);">Thank you for reaching out. I'll get back to you within 24 hours.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- FOOTER (shared) -->
+  <footer class="footer" id="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#home" onclick="navigate('home')" class="nav-logo" style="margin-bottom:0.5rem">
+            <div class="nav-logo-icon">
+              <svg viewBox="0 0 40 40" fill="none">
+                <path d="M20 4L4 36h32L20 4z" fill="none" stroke="#C9A96E" stroke-width="2"/>
+                <path d="M20 14L12 32h16L20 14z" fill="rgba(201,169,110,0.15)" stroke="#C9A96E" stroke-width="1.5"/>
+                <line x1="20" y1="4" x2="20" y2="14" stroke="#C9A96E" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <div>
+              <span class="nav-logo-text">Everest Capital</span>
+              <span class="nav-logo-sub">USA</span>
+            </div>
+          </a>
+          <p>Strategic real estate investment, development, and construction in Brevard County, Florida. Powered by a decade of foreclosure expertise and proprietary AI analysis.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <a href="#home" onclick="navigate('home')">Home</a>
+          <a href="#about" onclick="navigate('about')">About</a>
+          <a href="#services" onclick="navigate('services')">Services</a>
+          <a href="#portfolio" onclick="navigate('portfolio')">Portfolio</a>
+          <a href="#contact" onclick="navigate('contact')">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a href="#services" onclick="navigate('services')">Foreclosure Acquisition</a>
+          <a href="#services" onclick="navigate('services')">Development & Construction</a>
+          <a href="#services" onclick="navigate('services')">Mid-Term Rentals</a>
+          <a href="#services" onclick="navigate('services')">AI Intelligence</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2026 Everest Capital USA. All rights reserved. Satellite Beach, Florida.</span>
+        <div class="footer-badges">
+          <span class="footer-badge">FL Licensed Broker</span>
+          <span class="footer-badge">Certified GC</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ─── SPA ROUTING ───
+    function navigate(page) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      const target = document.getElementById('page-' + page);
+      if (target) {
+        target.classList.add('active');
+        target.classList.add('page-enter');
+        setTimeout(() => target.classList.remove('page-enter'), 400);
+      }
+
+      // Update nav active state
+      document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+      const navLink = document.getElementById('nav-' + page);
+      if (navLink) navLink.classList.add('active');
+
+      // Scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      // Close mobile menu
+      document.getElementById('navLinks').classList.remove('open');
+
+      // Update URL hash
+      history.pushState(null, '', '#' + page);
+    }
+
+    // Handle browser back/forward
+    window.addEventListener('popstate', () => {
+      const hash = location.hash.replace('#', '') || 'home';
+      navigate(hash);
+    });
+
+    // Initial route
+    window.addEventListener('DOMContentLoaded', () => {
+      const hash = location.hash.replace('#', '') || 'home';
+      navigate(hash);
+    });
+
+    // ─── NAVBAR SCROLL ───
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    // ─── MOBILE MENU ───
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('open');
+    }
+
+    // ─── SCROLL REVEAL ───
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Re-observe when pages change
+    const pageObserver = new MutationObserver(() => {
+      document.querySelectorAll('.reveal:not(.visible)').forEach(el => observer.observe(el));
+    });
+    document.querySelectorAll('.page').forEach(page => {
+      pageObserver.observe(page, { attributes: true, attributeFilter: ['class'] });
+    });
+
+    // ─── CONTACT FORM ───
+    function handleContact(e) {
+      e.preventDefault();
+      const form = document.getElementById('contactForm');
+      const success = document.getElementById('formSuccess');
+      form.style.display = 'none';
+      success.style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
