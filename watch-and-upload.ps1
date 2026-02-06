@@ -1,10 +1,10 @@
 # ============================================
 # watch-and-upload.ps1
 # Auto-uploads when files are added to project folders
-# Run in PowerShell ISE: File → Open → click ▶ Run
+# Run in PowerShell ISE: File → Open → click ▶ Run (F5)
 # ============================================
 
-$repoPath = "$env:USERPROFILE\Desktop\everestcapitalusa"
+$repoPath = Join-Path ([Environment]::GetFolderPath("Desktop")) "everestcapitalusa"
 $watchPath = "$repoPath\projects"
 
 Write-Host "============================================" -ForegroundColor Cyan
