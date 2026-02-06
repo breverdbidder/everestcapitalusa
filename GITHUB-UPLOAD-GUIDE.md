@@ -1,10 +1,11 @@
 # Automated Photo & PDF Upload to GitHub
+## Using Windows PowerShell ISE
 
-## Upload project files from your desktop folders directly to GitHub — no manual drag-and-drop needed.
+Upload project files from your desktop folders directly to GitHub — no manual drag-and-drop on the website needed.
 
 **Repository:** `breverdbidder/everestcapitalusa`
 **Target folders:** `projects/01/` through `projects/10/`
-**Your system:** Windows + PowerShell
+**Your tool:** Windows PowerShell ISE (built into Windows)
 
 ---
 
@@ -12,13 +13,15 @@
 
 ### Step 1: Install Git
 
-Open PowerShell **as Administrator** and run:
+1. Open **PowerShell ISE** — search "PowerShell ISE" in the Start menu, right-click → **Run as Administrator**
+2. In the **blue console pane** at the bottom, type:
 
 ```powershell
 winget install Git.Git
 ```
 
-Close and reopen PowerShell after installation. Verify it worked:
+3. **Close and reopen PowerShell ISE** after installation
+4. Verify it worked — type in the console:
 
 ```powershell
 git --version
@@ -28,32 +31,36 @@ You should see something like `git version 2.43.0.windows.1`.
 
 ### Step 2: Configure Git with Your Identity
 
+Type these two commands in the console pane:
+
 ```powershell
 git config --global user.name "Ariel Shapira"
 git config --global user.email "ariel@everestcapitalusa.com"
 ```
 
-### Step 3: Clone the Repository to Your Desktop
+### Step 3: Save Your Credentials (So You Don't Re-Enter Every Time)
+
+```powershell
+git config --global credential.helper store
+```
+
+### Step 4: Clone the Repository to Your Desktop
 
 ```powershell
 cd ~/Desktop
 git clone https://github.com/breverdbidder/everestcapitalusa.git
-cd everestcapitalusa
 ```
 
-Git will ask for authentication. Use:
+Git will ask for authentication **once**:
 - **Username:** `breverdbidder`
 - **Password:** Your GitHub Personal Access Token (PAT)
 
-> **Tip:** To avoid entering the PAT every time:
-> ```powershell
-> git config --global credential.helper store
-> ```
-> This saves credentials after the first successful login.
+After this, credentials are saved — you won't be asked again.
 
-### Step 4: Verify the Folder Structure
+### Step 5: Verify the Folder Structure
 
 ```powershell
+cd ~/Desktop/everestcapitalusa
 dir projects
 ```
 
@@ -63,11 +70,9 @@ You should see folders `01` through `10`. Each is ready for your files.
 
 ## Uploading Files (The Daily Workflow)
 
-### Option A: Simple Manual Upload (30 seconds per project)
+### Option A: Quick Upload via ISE Console (30 seconds)
 
-**1. Copy your files into the project folder:**
-
-Open File Explorer and drag your photos and PDFs into the appropriate folder:
+**1.** Open File Explorer and drag your photos and PDFs into the appropriate folder:
 
 ```
 Desktop\everestcapitalusa\projects\01\   ← drop photos + PDFs here
@@ -75,224 +80,147 @@ Desktop\everestcapitalusa\projects\02\   ← drop photos + PDFs here
 ...
 ```
 
-Name files anything you want: `front.jpg`, `IMG_4521.jpg`, `kitchen.png`, `floorplan.pdf` — all work.
-
-**2. Open PowerShell and push:**
+**2.** Open **PowerShell ISE** and type these 4 lines in the console pane:
 
 ```powershell
 cd ~/Desktop/everestcapitalusa
 git add .
-git commit -m "Add photos and drawings for Project 01"
+git commit -m "Add photos and drawings"
 git push
 ```
 
-Done. Files are on GitHub. Then tell Claude "files uploaded" and I'll deploy them to the live site.
+Done. Files are on GitHub.
+
+**3.** Tell Claude **"files uploaded"** and I'll deploy them to the live site.
 
 ---
 
-### Option B: One-Click Automated Script (Recommended)
+### Option B: One-Click Script in ISE (Recommended)
 
-Create this script once, then double-click it whenever you add new files.
+**1.** Open **PowerShell ISE**
 
-**1. Create the script:**
-
-Open Notepad and paste this:
-
-```powershell
-# ============================================
-# upload-projects.ps1
-# One-click upload of all project files to GitHub
-# ============================================
-
-$repoPath = "$env:USERPROFILE\Desktop\everestcapitalusa"
-
-# Navigate to repo
-Set-Location $repoPath
-
-# Pull latest changes first (avoid conflicts)
-git pull origin main
-
-# Stage all new/modified files
-git add .
-
-# Check if there are changes to commit
-$status = git status --porcelain
-if ($status) {
-    # Count new files
-    $fileCount = ($status | Measure-Object).Count
-    
-    # Create descriptive commit message
-    $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm"
-    $message = "Upload $fileCount files - $timestamp"
-    
-    # Commit and push
-    git commit -m $message
-    git push origin main
-    
-    Write-Host ""
-    Write-Host "============================================" -ForegroundColor Green
-    Write-Host "  SUCCESS: $fileCount files uploaded to GitHub" -ForegroundColor Green
-    Write-Host "============================================" -ForegroundColor Green
-    Write-Host ""
-    Write-Host "Next step: Tell Claude 'files uploaded' to deploy to the live site." -ForegroundColor Yellow
-} else {
-    Write-Host ""
-    Write-Host "No new files to upload. Add photos/PDFs to the projects/ folders first." -ForegroundColor Yellow
-}
-
-Write-Host ""
-Write-Host "Press any key to close..."
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+**2.** Click **File → Open** and navigate to:
+```
+Desktop\everestcapitalusa\upload-projects.ps1
 ```
 
-**2. Save it:**
+This script is already in the repo from the clone. It will appear in the **white script editor pane** at the top.
 
-Save as: `Desktop\everestcapitalusa\upload-projects.ps1`
+**3.** Click the green **▶ Run Script** button (or press **F5**)
 
-**3. Create a shortcut for one-click execution:**
-
-Right-click on your Desktop → New → Shortcut. Paste this as the location:
+The console pane will show:
 
 ```
-powershell.exe -ExecutionPolicy Bypass -File "%USERPROFILE%\Desktop\everestcapitalusa\upload-projects.ps1"
+============================================
+  SUCCESS: 12 files uploaded to GitHub
+============================================
+
+Next step: Tell Claude 'files uploaded' to deploy to the live site.
 ```
 
-Name it: **"Upload Projects to GitHub"**
+That's it. One click.
 
-**4. Usage:**
-
-1. Drop photos and PDFs into `projects/01/`, `projects/02/`, etc.
-2. Double-click the **"Upload Projects to GitHub"** shortcut
-3. Wait for the green SUCCESS message
-4. Tell Claude "files uploaded" → I deploy to the live site
+**Tip:** Pin PowerShell ISE to your taskbar for fast access. Open ISE → the script is already loaded from last time → hit F5 → done.
 
 ---
 
-### Option C: Auto-Upload on File Change (Fully Automated)
+### Option C: Auto-Upload Watcher (Fully Hands-Free)
 
-This watches your project folders and uploads automatically whenever you add files.
+This watches your project folders and uploads automatically whenever you drop files in.
 
-**1. Create the watcher script:**
+**1.** Open **PowerShell ISE**
 
-```powershell
-# ============================================
-# watch-and-upload.ps1
-# Auto-uploads when files are added to project folders
-# ============================================
-
-$repoPath = "$env:USERPROFILE\Desktop\everestcapitalusa"
-$watchPath = "$repoPath\projects"
-
-Write-Host "============================================" -ForegroundColor Cyan
-Write-Host "  Watching $watchPath for new files..." -ForegroundColor Cyan
-Write-Host "  Drop photos/PDFs into any project folder." -ForegroundColor Cyan
-Write-Host "  Press Ctrl+C to stop." -ForegroundColor Cyan
-Write-Host "============================================" -ForegroundColor Cyan
-
-$watcher = New-Object System.IO.FileSystemWatcher
-$watcher.Path = $watchPath
-$watcher.IncludeSubdirectories = $true
-$watcher.Filter = "*.*"
-$watcher.EnableRaisingEvents = $true
-
-# Debounce: wait 5 seconds after last change before uploading
-$timer = New-Object System.Timers.Timer
-$timer.Interval = 5000
-$timer.AutoReset = $false
-
-$action = {
-    Set-Location $repoPath
-    git add .
-    $status = git status --porcelain
-    if ($status) {
-        $fileCount = ($status | Measure-Object).Count
-        $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm"
-        git commit -m "Auto-upload $fileCount files - $timestamp"
-        git push origin main
-        Write-Host "[$(Get-Date -Format 'HH:mm:ss')] Uploaded $fileCount files" -ForegroundColor Green
-    }
-}
-
-Register-ObjectEvent $timer "Elapsed" -Action $action | Out-Null
-
-$onChange = {
-    $timer.Stop()
-    $timer.Start()
-    $name = $Event.SourceEventArgs.Name
-    Write-Host "[$(Get-Date -Format 'HH:mm:ss')] Detected: $name" -ForegroundColor Gray
-}
-
-Register-ObjectEvent $watcher "Created" -Action $onChange | Out-Null
-Register-ObjectEvent $watcher "Changed" -Action $onChange | Out-Null
-
-# Keep running
-while ($true) { Start-Sleep -Seconds 1 }
+**2.** Click **File → Open** and navigate to:
+```
+Desktop\everestcapitalusa\watch-and-upload.ps1
 ```
 
-Save as: `Desktop\everestcapitalusa\watch-and-upload.ps1`
+**3.** Click the green **▶ Run Script** button (or press **F5**)
 
-**2. Run it:**
+The console will show:
 
-```powershell
-powershell -ExecutionPolicy Bypass -File ~/Desktop/everestcapitalusa/watch-and-upload.ps1
+```
+============================================
+  Watching for new files...
+  Drop photos/PDFs into any project folder.
+  Press Ctrl+C to stop.
+============================================
 ```
 
-**3. How it works:**
+**4.** Now just drag and drop files into any `projects/` folder in File Explorer. The script detects new files, waits 5 seconds (in case you're dropping multiple), then auto-commits and pushes:
 
-- Watches all `projects/` subfolders
-- When you drop a file, it waits 5 seconds (in case you're dropping multiple files)
-- Auto-commits and pushes to GitHub
-- Shows a green confirmation for each upload batch
-- Keep it running in the background while you work
+```
+[14:32:05] Detected: 01/front-exterior.jpg
+[14:32:06] Detected: 01/kitchen.jpg
+[14:32:11] Uploaded 2 files ✅
+```
+
+**5.** Leave the ISE window running in the background while you work. Press **Ctrl+C** to stop.
 
 ---
 
-## File Organization
+## Where to Put Your Files
 
-### Where to Put Files
+### Folder Structure
 
 ```
-everestcapitalusa/
-  projects/
-    01/
-      front-exterior.jpg
-      kitchen.jpg
-      bathroom.png
-      floorplan.pdf
-    02/
-      IMG_4521.jpg
-      IMG_4522.jpg
-      site-plan.pdf
-    03/
-      photo1.jpg
-      photo2.jpg
-      drawing.pdf
-    ...
+Desktop\
+  everestcapitalusa\
+    projects\
+      01\
+        front-exterior.jpg
+        kitchen.jpg
+        bathroom.png
+        floorplan.pdf
+      02\
+        IMG_4521.jpg
+        IMG_4522.jpg
+        site-plan.pdf
+      03\
+        photo1.jpg
+        drawing.pdf
+      ...
 ```
 
 ### Supported File Types
 
-| Type | Extensions | Max Size | Where It Shows |
-|------|-----------|----------|----------------|
-| Photos | `.jpg` `.jpeg` `.png` `.webp` | 25 MB each | Gallery carousel (auto-slideshow) |
-| Drawings | `.pdf` | 25 MB each | Embedded PDF viewer (inline on page) |
+| Type | Extensions | Max Size | How It Displays on the Website |
+|------|-----------|----------|-------------------------------|
+| Photos | `.jpg` `.jpeg` `.png` `.webp` | 25 MB each | Auto-slideshow gallery carousel |
+| Drawings | `.pdf` | 25 MB each | Embedded PDF viewer (scrollable, inline) |
 
 ### Naming Rules
 
 - **Name files anything** — `IMG_1234.jpg`, `front.jpg`, `a.png` — all work
 - Photos display in **alphabetical order** in the gallery
-- If you want a specific order, prefix with numbers: `01-front.jpg`, `02-kitchen.jpg`
-- The first photo alphabetically becomes the **cover image**
+- Want a specific order? Prefix with numbers: `01-front.jpg`, `02-kitchen.jpg`, `03-bathroom.jpg`
+- The first photo alphabetically becomes the **cover image** for that project card
 
 ---
 
-## Quick Reference Card
+## PowerShell ISE Quick Reference
+
+| Action | How |
+|--------|-----|
+| Open ISE | Start menu → search "PowerShell ISE" |
+| Run as Admin | Right-click ISE → "Run as Administrator" |
+| Open a script | File → Open → select `.ps1` file |
+| Run a script | Click green **▶** button or press **F5** |
+| Stop a running script | Press **Ctrl+C** in the console pane |
+| Type commands manually | Click in the **blue console pane** at the bottom |
+| Clear the console | Type `cls` or `Clear-Host` |
+
+---
+
+## Git Commands Quick Reference
+
+Type these in the **ISE console pane** (bottom):
 
 | Task | Command |
 |------|---------|
-| First-time clone | `cd ~/Desktop; git clone https://github.com/breverdbidder/everestcapitalusa.git` |
-| Upload all changes | `cd ~/Desktop/everestcapitalusa; git add .; git commit -m "Upload files"; git push` |
-| Check what's new | `git status` |
+| Go to repo folder | `cd ~/Desktop/everestcapitalusa` |
+| Upload all changes | `git add .; git commit -m "Upload files"; git push` |
+| Check what's new/changed | `git status` |
 | Pull latest from GitHub | `git pull origin main` |
 | See upload history | `git log --oneline -10` |
 | Undo last commit (before push) | `git reset --soft HEAD~1` |
@@ -301,29 +229,68 @@ everestcapitalusa/
 
 ## Troubleshooting
 
-**"Permission denied" or authentication error:**
+### "Running scripts is disabled on this system"
+
+Type in the ISE console:
+```powershell
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+```
+Then try running the script again.
+
+### Authentication error / "Permission denied"
+
 ```powershell
 git config --global credential.helper store
-git push   # Enter username: breverdbidder, password: your PAT
+git push
 ```
+Enter username `breverdbidder` and your PAT as the password. It saves after the first time.
 
-**"Updates were rejected" (someone else pushed changes):**
+### "Updates were rejected" (conflict with GitHub)
+
 ```powershell
 git pull --rebase origin main
 git push
 ```
 
-**Files too large (>100 MB):**
-Compress photos before uploading, or use Git LFS:
+### Files too large (over 100 MB)
+
+Compress large photos before uploading, or install Git LFS:
 ```powershell
 git lfs install
 git lfs track "*.pdf"
 git add .gitattributes
+git add .
+git commit -m "Enable LFS for large PDFs"
+git push
 ```
 
-**Script won't run ("execution policy" error):**
-```powershell
-Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+### ISE won't open / missing
+
+PowerShell ISE is included in Windows 10. If missing:
+1. Open Settings → Apps → Optional Features
+2. Click "Add a feature"
+3. Search "Windows PowerShell ISE" → Install
+
+---
+
+## Complete Workflow Summary
+
+```
+┌─────────────────────────────────────────────┐
+│  1. Drop files into projects/01/, 02/, etc. │
+│     (File Explorer — drag and drop)         │
+│                    ↓                        │
+│  2. Open PowerShell ISE                     │
+│     File → Open → upload-projects.ps1       │
+│     Click ▶ Run (or press F5)               │
+│                    ↓                        │
+│  3. See "SUCCESS" in console                │
+│                    ↓                        │
+│  4. Tell Claude "files uploaded"            │
+│     Claude deploys to live site             │
+│                    ↓                        │
+│  5. Live at everestcapitalusa.com ✅         │
+└─────────────────────────────────────────────┘
 ```
 
 ---
@@ -336,7 +303,7 @@ Once files are on GitHub, come back to Claude and say:
 
 Claude will:
 1. Pull all files from the repo
-2. Update the HTML with gallery images + embedded PDFs
+2. Update the HTML with gallery images and embedded PDF viewers
 3. Deploy to [everestcapitalusa.com](https://everestcapitalusa.com)
 4. Verify everything renders correctly
 
