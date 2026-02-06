@@ -10,6 +10,17 @@
   <meta property="og:description" content="Florida real estate development, building, and investment. Five decades of combined experience across Israel and America. Foreclosure auctions, property development, construction, and mid-term rentals statewide.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://everestcapitalusa.com">
+  <meta property="og:image" content="https://everestcapitalusa.com/og-image.png">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="Everest Capital USA">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Everest Capital USA | Real Estate Development, Building & Investment">
+  <meta name="twitter:description" content="Florida real estate development, building, and investment. Five decades of combined experience. Foreclosure auctions, property development, construction, and mid-term rentals statewide.">
+  <meta name="twitter:image" content="https://everestcapitalusa.com/og-image.png">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Everest Capital USA">
+  <link rel="canonical" href="https://everestcapitalusa.com">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%231a1a2e'/%3E%3Cpath d='M20 8 L8 28 L11 25 L15 16 L18 22 L20 14 L22 22 L25 16 L29 25 L32 28 Z' fill='%23C9A96E'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -911,6 +922,37 @@
       .portfolio-grid { grid-template-columns: 1fr; }
     }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    "name": "Everest Capital USA",
+    "description": "Florida real estate development, building, and investment firm specializing in distressed assets, foreclosure auctions, and ground-up construction.",
+    "url": "https://everestcapitalusa.com",
+    "telephone": "+1-561-809-0929",
+    "email": "ariel@everestcapitalusa.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "1212 Main St",
+      "addressLocality": "Titusville",
+      "addressRegion": "FL",
+      "postalCode": "32796",
+      "addressCountry": "US"
+    },
+    "founder": {
+      "@type": "Person",
+      "name": "Ariel Shapira",
+      "jobTitle": "Founder & CEO"
+    },
+    "areaServed": {
+      "@type": "State",
+      "name": "Florida"
+    },
+    "openingHours": "Mo-Th 09:00-17:00",
+    "priceRange": "$$$$",
+    "sameAs": ["https://zonewise.ai"]
+  }
+  </script>
 </head>
 <body>
 
@@ -1374,7 +1416,7 @@
               <div class="contact-info-icon">📧</div>
               <div>
                 <div class="contact-info-label">Email</div>
-                <div class="contact-info-value"><a href="mailto:ariel@everestcapitalusa.com">ariel@everestcapitalusa.com</a></div>
+                <div class="contact-info-value"><a href="/cdn-cgi/l/email-protection#5736253e323b17322132253224233436273e23363b2224367934383a"><span class="__cf_email__" data-cfemail="debfacb7bbb29ebba8bbacbbadaabdbfaeb7aabfb2abadbff0bdb1b3">[email&#160;protected]</span></a></div>
               </div>
             </div>
             <div class="contact-info-card reveal">
@@ -1393,9 +1435,24 @@
             </div>
           </div>
 
+          <!-- Google Maps -->
+          <div class="reveal" style="margin-bottom:2rem;border-radius:12px;overflow:hidden;border:1px solid var(--border);">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.3!2d-80.8076!3d28.6117!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88e0b9c0b5db2daf%3A0x4d7dcf32dc24d2a6!2s1212%20Main%20St%2C%20Titusville%2C%20FL%2032796!5e0!3m2!1sen!2sus!4v1707200000000" 
+              width="100%" height="280" style="border:0;display:block;" allowfullscreen="" loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Everest Capital USA Office Location">
+            </iframe>
+          </div>
+
           <div class="contact-form reveal">
             <h3 style="font-family:var(--font-display);font-size:1.4rem;font-weight:600;margin-bottom:1.5rem;">Send a Message</h3>
-            <form id="contactForm" onsubmit="handleContact(event)">
+            <form id="contactForm" action="https://formsubmit.co/ariel@everestcapitalusa.com" method="POST">
+              <input type="hidden" name="_subject" value="New Contact from EverestCapitalUSA.com">
+              <input type="hidden" name="_captcha" value="false">
+              <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_next" value="https://everestcapitalusa.com/#contact-thanks">
+              <input type="text" name="_honey" style="display:none">
               <div class="form-row">
                 <div class="form-group">
                   <label for="name">Full Name</label>
@@ -1488,7 +1545,7 @@
     </div>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // ─── SPA ROUTING ───
     function navigate(page) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -1560,13 +1617,20 @@
       pageObserver.observe(page, { attributes: true, attributeFilter: ['class'] });
     });
 
-    // ─── CONTACT FORM ───
-    function handleContact(e) {
-      e.preventDefault();
-      const form = document.getElementById('contactForm');
-      const success = document.getElementById('formSuccess');
-      form.style.display = 'none';
-      success.style.display = 'block';
+    // ─── CONTACT FORM (FormSubmit.co) ───
+    // Show success message when redirected back after submission
+    if (window.location.hash === '#contact-thanks') {
+      setTimeout(() => {
+        navigate('contact');
+        setTimeout(() => {
+          const form = document.getElementById('contactForm');
+          const success = document.getElementById('formSuccess');
+          if (form && success) {
+            form.style.display = 'none';
+            success.style.display = 'block';
+          }
+        }, 300);
+      }, 100);
     }
   </script>
 
