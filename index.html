@@ -608,40 +608,96 @@
     /* ─── PORTFOLIO PAGE ─── */
     .portfolio-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+      gap: 2.5rem;
       margin-top: 2rem;
+    }
+    @media (max-width: 480px) {
+      .portfolio-grid { grid-template-columns: 1fr; }
     }
     .portfolio-card {
       background: var(--white);
-      border-radius: 8px;
+      border-radius: 10px;
       overflow: hidden;
-      border: 1px solid rgba(201,169,110,0.12);
+      border: 1px solid rgba(201,169,110,0.15);
       transition: var(--transition);
     }
     .portfolio-card:hover {
       transform: translateY(-4px);
       box-shadow: var(--shadow-lg);
     }
-    .portfolio-card-header {
-      height: 200px;
-      background: var(--navy);
+    /* ── Photo Gallery ── */
+    .gallery-wrap {
       position: relative;
+      height: 280px;
+      background: var(--navy);
+      overflow: hidden;
+    }
+    .gallery-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    .gallery-wrap img.active { opacity: 1; }
+    .gallery-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      color: rgba(201,169,110,0.5);
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+    }
+    .gallery-placeholder svg { opacity: 0.35; }
+    .gallery-nav {
+      position: absolute;
+      bottom: 0.75rem;
+      right: 0.75rem;
+      display: flex;
+      gap: 0.35rem;
+      z-index: 5;
+    }
+    .gallery-nav button {
+      width: 32px;
+      height: 32px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(26,26,46,0.7);
+      color: var(--gold);
+      font-size: 0.85rem;
+      cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
+      backdrop-filter: blur(4px);
+      transition: background 0.2s;
     }
-    .portfolio-card-header::before {
-      content: '';
+    .gallery-nav button:hover { background: rgba(26,26,46,0.9); }
+    .gallery-counter {
       position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, var(--navy-light), var(--navy-mid));
+      top: 0.75rem;
+      right: 0.75rem;
+      background: rgba(26,26,46,0.7);
+      color: var(--gold);
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.3rem 0.6rem;
+      border-radius: 3px;
+      z-index: 5;
+      letter-spacing: 0.05em;
+      backdrop-filter: blur(4px);
     }
     .portfolio-card-type {
       position: absolute;
-      top: 1rem;
-      left: 1rem;
+      top: 0.75rem;
+      left: 0.75rem;
       padding: 0.35rem 0.8rem;
       background: rgba(201,169,110,0.2);
       border: 1px solid rgba(201,169,110,0.3);
@@ -651,30 +707,29 @@
       letter-spacing: 0.1em;
       text-transform: uppercase;
       border-radius: 3px;
-      z-index: 2;
+      z-index: 5;
+      backdrop-filter: blur(4px);
     }
-    .portfolio-card-icon {
-      font-size: 3rem;
-      z-index: 2;
-      opacity: 0.25;
-    }
+    /* ── Card Body ── */
     .portfolio-card-body {
       padding: 1.5rem;
     }
     .portfolio-card h3 {
       font-family: var(--font-display);
-      font-size: 1.3rem;
+      font-size: 1.25rem;
       font-weight: 600;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.3rem;
+      color: var(--text-primary);
     }
     .portfolio-card-location {
       font-size: 0.82rem;
       color: var(--text-light);
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
     }
-    .portfolio-card p {
-      font-size: 0.9rem;
+    .portfolio-card-desc {
+      font-size: 0.88rem;
       color: var(--text-secondary);
+      line-height: 1.6;
       margin-bottom: 1rem;
     }
     .portfolio-card-stats {
@@ -682,6 +737,7 @@
       gap: 1.5rem;
       padding-top: 1rem;
       border-top: 1px solid var(--cream-dark);
+      flex-wrap: wrap;
     }
     .portfolio-card-stat label {
       display: block;
@@ -693,9 +749,62 @@
     }
     .portfolio-card-stat span {
       font-family: var(--font-display);
-      font-size: 1.15rem;
+      font-size: 1.05rem;
       font-weight: 700;
       color: var(--text-primary);
+    }
+    /* ── PDF Viewer ── */
+    .pdf-section {
+      margin-top: 1rem;
+      border-top: 1px solid var(--cream-dark);
+      padding-top: 1rem;
+    }
+    .pdf-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: none;
+      border: 1px solid rgba(201,169,110,0.3);
+      border-radius: 6px;
+      padding: 0.6rem 1rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--gold-dark);
+      cursor: pointer;
+      width: 100%;
+      transition: var(--transition);
+    }
+    .pdf-toggle:hover {
+      background: rgba(201,169,110,0.08);
+      border-color: var(--gold);
+    }
+    .pdf-toggle .arrow { transition: transform 0.3s; }
+    .pdf-toggle.open .arrow { transform: rotate(180deg); }
+    .pdf-embed-wrap {
+      margin-top: 0.75rem;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--cream-dark);
+      display: none;
+    }
+    .pdf-embed-wrap.visible { display: block; }
+    .pdf-embed-wrap iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+      display: block;
+    }
+    .pdf-placeholder {
+      height: 120px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: var(--cream);
+      color: var(--text-light);
+      font-size: 0.82rem;
+    }
     }
 
     /* ─── CONTACT PAGE ─── */
@@ -1274,102 +1383,325 @@
     <section class="about-hero">
       <div class="about-hero-inner">
         <div class="hero-badge" style="animation:none">Track Record</div>
-        <h1 style="font-family:var(--font-display);font-size:clamp(2.4rem,5vw,3.5rem);font-weight:600;color:var(--white);margin-bottom:1rem;">Portfolio <em style="color:var(--gold)">Highlights</em></h1>
-        <p style="font-size:1.1rem;color:var(--text-on-dark);max-width:560px;">A selection of investment categories and project types across Florida's foreclosure, development, and building markets.</p>
+        <h1 style="font-family:var(--font-display);font-size:clamp(2.4rem,5vw,3.5rem);font-weight:600;color:var(--white);margin-bottom:1rem;">Our <em style="color:var(--gold)">Projects</em></h1>
+        <p style="font-size:1.1rem;color:var(--text-on-dark);max-width:560px;">A portfolio of development, renovation, and investment projects across Florida — each backed by in-house construction, AI-powered due diligence, and decades of hands-on experience.</p>
       </div>
     </section>
 
     <section class="section" style="background:var(--white)">
       <div class="section-inner">
-        <div class="section-label">Investment Categories</div>
-        <h2 class="section-title">Where We Create Value</h2>
-        <p class="section-subtitle">Our portfolio spans multiple property types and investment strategies across Florida.</p>
+        <div class="section-label">Project Portfolio</div>
+        <h2 class="section-title">10 Projects. Built. Renovated. Managed.</h2>
+        <p class="section-subtitle">Each project below includes property photos and architectural drawings. Click "View Drawings" to see the full PDF plans inline.</p>
 
         <div class="portfolio-grid">
 
-          <div class="portfolio-card reveal">
-            <div class="portfolio-card-header">
-              <span class="portfolio-card-type">Foreclosure Acquisition</span>
-              <div class="portfolio-card-icon" style="color:var(--gold)">⚖️</div>
+          <!-- ═══ PROJECT 01 ═══ -->
+          <div class="portfolio-card reveal" data-project="01">
+            <div class="gallery-wrap">
+              <span class="portfolio-card-type">Project 01</span>
+              <div class="gallery-placeholder">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <span>Photos Coming Soon</span>
+              </div>
+              <!-- Photos will render here automatically when added -->
             </div>
             <div class="portfolio-card-body">
-              <h3>Courthouse Auction Acquisitions</h3>
-              <p class="portfolio-card-location">Titusville Courthouse, Brevard County</p>
-              <p>In-person bidding at monthly foreclosure auctions with AI-verified due diligence. Each property evaluated through our 12-stage analysis pipeline before a single bid is placed.</p>
+              <h3>Project 01</h3>
+              <p class="portfolio-card-location">Address TBD — Brevard County, FL</p>
+              <p class="portfolio-card-desc">Project details coming soon. Photos and architectural drawings will be displayed here once uploaded.</p>
               <div class="portfolio-card-stats">
-                <div class="portfolio-card-stat">
-                  <label>Strategy</label>
-                  <span>Buy & Hold</span>
-                </div>
-                <div class="portfolio-card-stat">
-                  <label>Analysis</label>
-                  <span>AI-Powered</span>
+                <div class="portfolio-card-stat"><label>Type</label><span>—</span></div>
+                <div class="portfolio-card-stat"><label>Status</label><span>—</span></div>
+              </div>
+              <div class="pdf-section">
+                <button class="pdf-toggle" onclick="togglePdf(this)">
+                  📐 <span>View Drawings</span> <span class="arrow" style="margin-left:auto;">▼</span>
+                </button>
+                <div class="pdf-embed-wrap">
+                  <div class="pdf-placeholder">
+                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+                    <span>PDF drawings will appear here</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="portfolio-card reveal">
-            <div class="portfolio-card-header">
-              <span class="portfolio-card-type">Renovation</span>
-              <div class="portfolio-card-icon" style="color:var(--gold)">🏗️</div>
+          <!-- ═══ PROJECT 02 ═══ -->
+          <div class="portfolio-card reveal" data-project="02">
+            <div class="gallery-wrap">
+              <span class="portfolio-card-type">Project 02</span>
+              <div class="gallery-placeholder">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <span>Photos Coming Soon</span>
+              </div>
             </div>
             <div class="portfolio-card-body">
-              <h3>Value-Add Renovation Projects</h3>
-              <p class="portfolio-card-location">Satellite Beach, Melbourne, Merritt Island</p>
-              <p>Full-scale renovations managed in-house with CGC license. From structural repairs to complete interior remodels, controlling every aspect of the construction timeline and budget.</p>
+              <h3>Project 02</h3>
+              <p class="portfolio-card-location">Address TBD — Brevard County, FL</p>
+              <p class="portfolio-card-desc">Project details coming soon. Photos and architectural drawings will be displayed here once uploaded.</p>
               <div class="portfolio-card-stats">
-                <div class="portfolio-card-stat">
-                  <label>Scope</label>
-                  <span>Full Rehab</span>
-                </div>
-                <div class="portfolio-card-stat">
-                  <label>Management</label>
-                  <span>In-House</span>
+                <div class="portfolio-card-stat"><label>Type</label><span>—</span></div>
+                <div class="portfolio-card-stat"><label>Status</label><span>—</span></div>
+              </div>
+              <div class="pdf-section">
+                <button class="pdf-toggle" onclick="togglePdf(this)">
+                  📐 <span>View Drawings</span> <span class="arrow" style="margin-left:auto;">▼</span>
+                </button>
+                <div class="pdf-embed-wrap">
+                  <div class="pdf-placeholder">
+                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+                    <span>PDF drawings will appear here</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="portfolio-card reveal">
-            <div class="portfolio-card-header">
-              <span class="portfolio-card-type">Rental Income</span>
-              <div class="portfolio-card-icon" style="color:var(--gold)">🏠</div>
+          <!-- ═══ PROJECT 03 ═══ -->
+          <div class="portfolio-card reveal" data-project="03">
+            <div class="gallery-wrap">
+              <span class="portfolio-card-type">Project 03</span>
+              <div class="gallery-placeholder">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <span>Photos Coming Soon</span>
+              </div>
             </div>
             <div class="portfolio-card-body">
-              <h3>Mid-Term Furnished Rentals</h3>
-              <p class="portfolio-card-location">Satellite Beach, Viera, Indialantic</p>
-              <p>Professionally furnished properties targeting 30-180 day stays for Space Coast professionals. Premium locations near KSC, L3Harris, and Patrick SFB with strong demand year-round.</p>
+              <h3>Project 03</h3>
+              <p class="portfolio-card-location">Address TBD — Brevard County, FL</p>
+              <p class="portfolio-card-desc">Project details coming soon. Photos and architectural drawings will be displayed here once uploaded.</p>
               <div class="portfolio-card-stats">
-                <div class="portfolio-card-stat">
-                  <label>Duration</label>
-                  <span>30-180 Days</span>
-                </div>
-                <div class="portfolio-card-stat">
-                  <label>Market</label>
-                  <span>Space Coast</span>
+                <div class="portfolio-card-stat"><label>Type</label><span>—</span></div>
+                <div class="portfolio-card-stat"><label>Status</label><span>—</span></div>
+              </div>
+              <div class="pdf-section">
+                <button class="pdf-toggle" onclick="togglePdf(this)">
+                  📐 <span>View Drawings</span> <span class="arrow" style="margin-left:auto;">▼</span>
+                </button>
+                <div class="pdf-embed-wrap">
+                  <div class="pdf-placeholder">
+                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+                    <span>PDF drawings will appear here</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="portfolio-card reveal">
-            <div class="portfolio-card-header">
-              <span class="portfolio-card-type">Technology</span>
-              <div class="portfolio-card-icon" style="color:var(--gold)">📊</div>
+          <!-- ═══ PROJECT 04 ═══ -->
+          <div class="portfolio-card reveal" data-project="04">
+            <div class="gallery-wrap">
+              <span class="portfolio-card-type">Project 04</span>
+              <div class="gallery-placeholder">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <span>Photos Coming Soon</span>
+              </div>
             </div>
             <div class="portfolio-card-body">
-              <h3>Proprietary Analysis Platform</h3>
-              <p class="portfolio-card-location">Built In-House for Florida Markets</p>
-              <p>AI-powered foreclosure intelligence platform that processes lien data, title records, tax certificates, and demographics into actionable bid recommendations with risk scoring.</p>
+              <h3>Project 04</h3>
+              <p class="portfolio-card-location">Address TBD — Brevard County, FL</p>
+              <p class="portfolio-card-desc">Project details coming soon. Photos and architectural drawings will be displayed here once uploaded.</p>
               <div class="portfolio-card-stats">
-                <div class="portfolio-card-stat">
-                  <label>Type</label>
-                  <span>Agentic AI</span>
+                <div class="portfolio-card-stat"><label>Type</label><span>—</span></div>
+                <div class="portfolio-card-stat"><label>Status</label><span>—</span></div>
+              </div>
+              <div class="pdf-section">
+                <button class="pdf-toggle" onclick="togglePdf(this)">
+                  📐 <span>View Drawings</span> <span class="arrow" style="margin-left:auto;">▼</span>
+                </button>
+                <div class="pdf-embed-wrap">
+                  <div class="pdf-placeholder">
+                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+                    <span>PDF drawings will appear here</span>
+                  </div>
                 </div>
-                <div class="portfolio-card-stat">
-                  <label>Advantage</label>
-                  <span>Proprietary</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ═══ PROJECT 05 ═══ -->
+          <div class="portfolio-card reveal" data-project="05">
+            <div class="gallery-wrap">
+              <span class="portfolio-card-type">Project 05</span>
+              <div class="gallery-placeholder">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <span>Photos Coming Soon</span>
+              </div>
+            </div>
+            <div class="portfolio-card-body">
+              <h3>Project 05</h3>
+              <p class="portfolio-card-location">Address TBD — Brevard County, FL</p>
+              <p class="portfolio-card-desc">Project details coming soon. Photos and architectural drawings will be displayed here once uploaded.</p>
+              <div class="portfolio-card-stats">
+                <div class="portfolio-card-stat"><label>Type</label><span>—</span></div>
+                <div class="portfolio-card-stat"><label>Status</label><span>—</span></div>
+              </div>
+              <div class="pdf-section">
+                <button class="pdf-toggle" onclick="togglePdf(this)">
+                  📐 <span>View Drawings</span> <span class="arrow" style="margin-left:auto;">▼</span>
+                </button>
+                <div class="pdf-embed-wrap">
+                  <div class="pdf-placeholder">
+                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+                    <span>PDF drawings will appear here</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ═══ PROJECT 06 ═══ -->
+          <div class="portfolio-card reveal" data-project="06">
+            <div class="gallery-wrap">
+              <span class="portfolio-card-type">Project 06</span>
+              <div class="gallery-placeholder">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <span>Photos Coming Soon</span>
+              </div>
+            </div>
+            <div class="portfolio-card-body">
+              <h3>Project 06</h3>
+              <p class="portfolio-card-location">Address TBD — Brevard County, FL</p>
+              <p class="portfolio-card-desc">Project details coming soon. Photos and architectural drawings will be displayed here once uploaded.</p>
+              <div class="portfolio-card-stats">
+                <div class="portfolio-card-stat"><label>Type</label><span>—</span></div>
+                <div class="portfolio-card-stat"><label>Status</label><span>—</span></div>
+              </div>
+              <div class="pdf-section">
+                <button class="pdf-toggle" onclick="togglePdf(this)">
+                  📐 <span>View Drawings</span> <span class="arrow" style="margin-left:auto;">▼</span>
+                </button>
+                <div class="pdf-embed-wrap">
+                  <div class="pdf-placeholder">
+                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+                    <span>PDF drawings will appear here</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ═══ PROJECT 07 ═══ -->
+          <div class="portfolio-card reveal" data-project="07">
+            <div class="gallery-wrap">
+              <span class="portfolio-card-type">Project 07</span>
+              <div class="gallery-placeholder">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <span>Photos Coming Soon</span>
+              </div>
+            </div>
+            <div class="portfolio-card-body">
+              <h3>Project 07</h3>
+              <p class="portfolio-card-location">Address TBD — Brevard County, FL</p>
+              <p class="portfolio-card-desc">Project details coming soon. Photos and architectural drawings will be displayed here once uploaded.</p>
+              <div class="portfolio-card-stats">
+                <div class="portfolio-card-stat"><label>Type</label><span>—</span></div>
+                <div class="portfolio-card-stat"><label>Status</label><span>—</span></div>
+              </div>
+              <div class="pdf-section">
+                <button class="pdf-toggle" onclick="togglePdf(this)">
+                  📐 <span>View Drawings</span> <span class="arrow" style="margin-left:auto;">▼</span>
+                </button>
+                <div class="pdf-embed-wrap">
+                  <div class="pdf-placeholder">
+                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+                    <span>PDF drawings will appear here</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ═══ PROJECT 08 ═══ -->
+          <div class="portfolio-card reveal" data-project="08">
+            <div class="gallery-wrap">
+              <span class="portfolio-card-type">Project 08</span>
+              <div class="gallery-placeholder">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <span>Photos Coming Soon</span>
+              </div>
+            </div>
+            <div class="portfolio-card-body">
+              <h3>Project 08</h3>
+              <p class="portfolio-card-location">Address TBD — Brevard County, FL</p>
+              <p class="portfolio-card-desc">Project details coming soon. Photos and architectural drawings will be displayed here once uploaded.</p>
+              <div class="portfolio-card-stats">
+                <div class="portfolio-card-stat"><label>Type</label><span>—</span></div>
+                <div class="portfolio-card-stat"><label>Status</label><span>—</span></div>
+              </div>
+              <div class="pdf-section">
+                <button class="pdf-toggle" onclick="togglePdf(this)">
+                  📐 <span>View Drawings</span> <span class="arrow" style="margin-left:auto;">▼</span>
+                </button>
+                <div class="pdf-embed-wrap">
+                  <div class="pdf-placeholder">
+                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+                    <span>PDF drawings will appear here</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ═══ PROJECT 09 ═══ -->
+          <div class="portfolio-card reveal" data-project="09">
+            <div class="gallery-wrap">
+              <span class="portfolio-card-type">Project 09</span>
+              <div class="gallery-placeholder">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <span>Photos Coming Soon</span>
+              </div>
+            </div>
+            <div class="portfolio-card-body">
+              <h3>Project 09</h3>
+              <p class="portfolio-card-location">Address TBD — Brevard County, FL</p>
+              <p class="portfolio-card-desc">Project details coming soon. Photos and architectural drawings will be displayed here once uploaded.</p>
+              <div class="portfolio-card-stats">
+                <div class="portfolio-card-stat"><label>Type</label><span>—</span></div>
+                <div class="portfolio-card-stat"><label>Status</label><span>—</span></div>
+              </div>
+              <div class="pdf-section">
+                <button class="pdf-toggle" onclick="togglePdf(this)">
+                  📐 <span>View Drawings</span> <span class="arrow" style="margin-left:auto;">▼</span>
+                </button>
+                <div class="pdf-embed-wrap">
+                  <div class="pdf-placeholder">
+                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+                    <span>PDF drawings will appear here</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ═══ PROJECT 10 ═══ -->
+          <div class="portfolio-card reveal" data-project="10">
+            <div class="gallery-wrap">
+              <span class="portfolio-card-type">Project 10</span>
+              <div class="gallery-placeholder">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <span>Photos Coming Soon</span>
+              </div>
+            </div>
+            <div class="portfolio-card-body">
+              <h3>Project 10</h3>
+              <p class="portfolio-card-location">Address TBD — Brevard County, FL</p>
+              <p class="portfolio-card-desc">Project details coming soon. Photos and architectural drawings will be displayed here once uploaded.</p>
+              <div class="portfolio-card-stats">
+                <div class="portfolio-card-stat"><label>Type</label><span>—</span></div>
+                <div class="portfolio-card-stat"><label>Status</label><span>—</span></div>
+              </div>
+              <div class="pdf-section">
+                <button class="pdf-toggle" onclick="togglePdf(this)">
+                  📐 <span>View Drawings</span> <span class="arrow" style="margin-left:auto;">▼</span>
+                </button>
+                <div class="pdf-embed-wrap">
+                  <div class="pdf-placeholder">
+                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+                    <span>PDF drawings will appear here</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1632,6 +1964,63 @@
         }, 300);
       }, 100);
     }
+
+    // ─── PDF TOGGLE ───
+    function togglePdf(btn) {
+      const wrap = btn.nextElementSibling;
+      btn.classList.toggle('open');
+      wrap.classList.toggle('visible');
+    }
+
+    // ─── PHOTO GALLERY CAROUSEL ───
+    // Initialize galleries for project cards that have images loaded
+    function initGalleries() {
+      document.querySelectorAll('.portfolio-card[data-project]').forEach(card => {
+        const wrap = card.querySelector('.gallery-wrap');
+        const imgs = wrap.querySelectorAll('img');
+        if (imgs.length === 0) return; // No images yet, keep placeholder
+
+        // Hide placeholder
+        const placeholder = wrap.querySelector('.gallery-placeholder');
+        if (placeholder) placeholder.style.display = 'none';
+
+        // Set first image active
+        imgs[0].classList.add('active');
+        let current = 0;
+
+        // Add counter
+        const counter = document.createElement('div');
+        counter.className = 'gallery-counter';
+        counter.textContent = `1 / ${imgs.length}`;
+        wrap.appendChild(counter);
+
+        if (imgs.length > 1) {
+          // Add nav buttons
+          const nav = document.createElement('div');
+          nav.className = 'gallery-nav';
+          nav.innerHTML = '<button class="prev">◀</button><button class="next">▶</button>';
+          wrap.appendChild(nav);
+
+          const goTo = (idx) => {
+            imgs[current].classList.remove('active');
+            current = (idx + imgs.length) % imgs.length;
+            imgs[current].classList.add('active');
+            counter.textContent = `${current + 1} / ${imgs.length}`;
+          };
+
+          nav.querySelector('.prev').addEventListener('click', () => goTo(current - 1));
+          nav.querySelector('.next').addEventListener('click', () => goTo(current + 1));
+
+          // Auto-advance every 4 seconds
+          let autoPlay = setInterval(() => goTo(current + 1), 4000);
+          wrap.addEventListener('mouseenter', () => clearInterval(autoPlay));
+          wrap.addEventListener('mouseleave', () => {
+            autoPlay = setInterval(() => goTo(current + 1), 4000);
+          });
+        }
+      });
+    }
+    initGalleries();
   </script>
 
 </body>
