@@ -1,9 +1,9 @@
 # ============================================
 # upload-projects.ps1
-# One-click upload of all project files to GitHub
+# One-click upload — open in PowerShell ISE, press F5
 # ============================================
 
-$repoPath = "$env:USERPROFILE\Desktopverestcapitalusa"
+$repoPath = Join-Path ([Environment]::GetFolderPath("Desktop")) "everestcapitalusa"
 
 Set-Location $repoPath
 git pull origin main
