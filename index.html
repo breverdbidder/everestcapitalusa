@@ -1006,19 +1006,8 @@
     .reveal {
       opacity: 1;
       transform: translateY(0);
-      transition: opacity 0.6s ease, transform 0.6s ease;
     }
-    /* JS-enhanced animation: only animate IN if browser supports IntersectionObserver and starts hidden */
-    @supports (animation-timeline: view()) {
-      .reveal:not(.visible) {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      .reveal.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+    
 
     /* Smooth page transitions */
     .page-enter {
@@ -2073,7 +2062,7 @@
     </div>
   
       <div class="build-stamp" style="text-align:center; padding: 1rem; font-size: 0.75rem; color: rgba(255,255,255,0.4); border-top: 1px solid rgba(255,255,255,0.08); margin-top: 1rem;">
-        Site updated: April 28, 2026 at 7:08 PM EDT &middot; Build 20260428-1908
+        Site updated: April 28, 2026 at 7:13 PM EDT &middot; Build 20260428-1913
       </div>
         </footer>
 
