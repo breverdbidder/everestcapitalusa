@@ -1,16 +1,3 @@
-# Project 04
+# Project 04 — 1548 Rainsville Street SE, Palm Bay
 
-## Upload your files here
-
-Drop photos (JPG/PNG) and PDF drawings into this folder.
-
-### Photos
-- Name them anything: front.jpg, kitchen.png, IMG_1234.jpg — all work
-- They'll auto-appear in the gallery carousel on the website
-
-### Drawings  
-- Name PDF files anything: floorplan.pdf, siteplan.pdf, drawing.pdf
-- They'll render inline on the website with an embedded viewer
-
----
-*Files will be pulled and deployed automatically.*
+Photos and full chain-of-title narrative pending. Will be populated as deed scrape and Mapbox aerial generation complete.
