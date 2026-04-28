@@ -1,36 +1,32 @@
-# Project 03 — 2456 Bonny Drive, Cocoa FL
+# Project 02 — 977 Miracle Way, Rockledge FL
 
 ## Property Summary
 
 | Field | Value |
 |---|---|
-| Address | 2456 Bonny Drive, Cocoa, FL |
-| Subdivision | Melrose Manor Unit 2 |
+| Address | 977 Miracle Way, Rockledge, FL |
+| Subdivision | Fairway Estates |
 | County | Brevard |
 | Type | Single Family Residence |
-| Legal | LT 11 BLK C, PB 19 PG 72, MELROSE MANOR UNIT 2, S 30 T 24 R 36 SUBID 51 |
+| Legal | LT 4 BLK E, PB 16 PG 124, FAIRWAY ESTATES, S 05 T 25 R 36 SUBID 08 |
 
 ## Verified Chain of Title (Brevard Clerk OnCore)
 
 | Date | Event | Parties | Consideration | Instrument |
 |---|---|---|---|---|
-| Pre-2012 | DEED (acquisition) | Maxi Day Inc (seller details pending older records) | — | — |
-| Dec 21, 2012 | LIEN | City of Cocoa (utility) | — | 2012257107 |
-| Jan 3, 2013 + Feb 15, 2013 | RELEASE | City of Cocoa (lien cleared) | — | — |
-| Aug 15, 2016 | DEED (housekeeping) | Day, Maxi (individual) → Maxi Day Inc | $0 | 2016158613 |
-| **Aug 15, 2016** | **DEED (sale)** | **Maxi Day Inc → Stevens, Marlena June** | **$89,900** | **2016158614** |
-| Aug 15, 2016 | MORTGAGE | Stevens → PNC Mortgage | $52,500 (58% LTV) | 2016158615 |
-| May 3, 2019 | NOTICE OF COMMENCEMENT | Stevens → Total Home Properties | — | 2019094444 |
-| Jul 1, 2022 | MORTGAGE (refi) | Stevens → PNC Bank National Assn | $50,000 | 2022164240 |
-| Aug 1, 2022 | NOTICE OF COMMENCEMENT | Stevens → Advanced Plumbing Technology | — | 2022189487 |
+| Apr 30, 2012 | DEED | Lopez, Wendy J → Maxi Day Inc | $30,000 | 2012082749 |
+| Jun 25, 2015 | LIEN | City of Cocoa (utility) | — | 2015126231 |
+| Sep 1, 2015 | DEED (intra-portfolio) | Maxi Day Inc → SSM Property Investments LLC | $50,000 | 2015173088 |
+| Aug 12, 2016 | DEED (intra-portfolio) | Maxi Day Inc → SSM Property Investments LLC | $0 | 2016157581 |
+| **Aug 12, 2016** | **DEED (sale)** | **SSM Property Investments LLC → Tinajero, Rafael Ramirez** | **$159,900** | **2016157582** |
 
 ## Story
 
-Sold August 2016 to homeowner-occupant Marlena June Stevens for $89,900, financed with a conventional PNC Mortgage at $52,500 (58% LTV — well-qualified buyer). **Stevens has now owned the property continuously for over nine years**, made multiple meaningful improvements (renovation in 2019, plumbing upgrades in 2022), and refinanced once. The textbook Ariel Formula homeowner-occupant outcome — distressed inventory exiting Everest's portfolio into stable family ownership that compounds equity over the long term.
+Acquired April 2012 from a private seller (Wendy J. Lopez) at $30,000 during the post-2009 distressed cycle. Held through the recovery, restructured through SSM Property Investments LLC for clean-title delivery, and sold August 2016 to homeowner-occupant Rafael Ramirez Tinajero at $159,900. **Tinajero has held the property continuously since — no resale recorded as of April 2026.** A textbook Ariel Formula private-acquisition flip ending in long-term family ownership.
 
 ## Photos
 
-5 Mapbox satellite/3D-aerial views of the property and the Melrose Manor neighborhood along Bonny Drive (Maxar imagery, rooftop-accuracy geocode).
+5 Mapbox satellite/3D-aerial views of the property and the Fairway Estates neighborhood (Maxar imagery, rooftop-accuracy geocode).
 
 ## Original 2016 MLS Listing Photos
 
