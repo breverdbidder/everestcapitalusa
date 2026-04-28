@@ -1004,13 +1004,20 @@
       to { opacity: 1; transform: translateY(0); }
     }
     .reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .reveal.visible {
       opacity: 1;
       transform: translateY(0);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    /* JS-enhanced animation: only animate IN if browser supports IntersectionObserver and starts hidden */
+    @supports (animation-timeline: view()) {
+      .reveal:not(.visible) {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* Smooth page transitions */
@@ -1391,7 +1398,7 @@
     <section class="section" style="background:var(--white)">
       <div class="section-inner">
         <div class="section-label">Project Portfolio</div>
-        <h2 class="section-title">14 Projects. Built. Renovated. Managed.</h2>
+        <h2 class="section-title">13 Projects. Built. Renovated. Managed.</h2>
         <p class="section-subtitle">Each project below includes property photos and architectural drawings. Click "View Drawings" to see the full PDF plans inline.</p>
 
         <div class="portfolio-grid">
@@ -1449,7 +1456,7 @@
               <p class="portfolio-card-desc">0.92-acre vacant land assemblage with US-1 frontage in Mims (Brevard County) acquired August 2025 at the Brevard tax deed auction at a basis of approximately $1,862, then sold all-cash April 13, 2026 for $80,000. Net proceeds to Everest Capital of Brevard $73,891.95. Parcel 20-35-31-00-516. The seven-month tax-deed-to-cash sale demonstrates the Ariel Formula's velocity capability when title and resale execution are aligned.</p>
               <div class="portfolio-card-stats">
                 <div class="portfolio-card-stat"><label>Type</label><span>Land Hold-and-Sell</span></div>
-                <div class="portfolio-card-stat"><label>Status</label><span>Closed — $398,600</span></div>
+                <div class="portfolio-card-stat"><label>Status</label><span>Closed — $80,000</span></div>
               </div>
               <div class="pdf-section">
                 <button class="pdf-toggle" onclick="togglePdf(this)">
@@ -2066,7 +2073,7 @@
     </div>
   
       <div class="build-stamp" style="text-align:center; padding: 1rem; font-size: 0.75rem; color: rgba(255,255,255,0.4); border-top: 1px solid rgba(255,255,255,0.08); margin-top: 1rem;">
-        Site updated: April 28, 2026 at 7:00 PM EDT &middot; Build 20260428-1900
+        Site updated: April 28, 2026 at 7:08 PM EDT &middot; Build 20260428-1908
       </div>
         </footer>
 
